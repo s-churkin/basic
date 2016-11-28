@@ -1,0 +1,4 @@
+AddDefaultCharset Off
+
+RewriteEngine on
+RewriteRule ^(.+)?$ /web/$1
