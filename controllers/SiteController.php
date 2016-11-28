@@ -131,7 +131,7 @@ http://localhost/basic/web/index.php?r=site/entry
         return '<head><meta http-equiv="refresh" content="0;' . $message . '" /></head> ';
     }
 
-} 
+}
 
 
 /* compact('message', 'var') */
