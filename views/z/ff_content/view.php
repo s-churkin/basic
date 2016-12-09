@@ -4,14 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Tree */
+/* @var $model app\models\ff_content */
 /* @var $form ActiveForm */
 ?>
-<div class="tree-create">
+<div class="ff_content-view">
 
     <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($model, 'id') ?>
         <?= $form->field($model, 'name') ?>
         <?= $form->field($model, 'tree_id') ?>
         <?= $form->field($model, 'url') ?>
@@ -21,4 +20,4 @@ use yii\widgets\ActiveForm;
         </div>
     <?php ActiveForm::end(); ?>
 
-</div><!-- tree-create -->
+</div><!-- ff_content-view -->

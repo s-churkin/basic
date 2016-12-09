@@ -39,15 +39,27 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
             /*!!!*/
-                ['label' => 'Дерево понятий', 'items' => [
-                    ['label' => 'Понятия', 'url' => ['/']],
-                    ['label' => 'Реквизиты', 'url' => ['/']],
-                    ['label' => 'Значенния', 'url' => ['/']],
+                ['label' => 'Приложения', 'items' => [
+                    ['label' => 'Дерево объектов', 'url' => ['/ff_content/index']],
+                    ['label' => 'Банкроты', 'url' => ['/']],
+                    ['label' => 'Курсы валют', 'url' => ['/']],
             ]],
-            ['label' => 'Закладки', 'items' => [
+            ['label' => 'Тесты', 'items' => [
+                        ['label' => 'Hello!', 'url' => ['/site/say-hello', 'message' => 'Привет мир!']],
+                        ['label' => 'Форма', 'url' => ['/site/entry']],
+                        ['label' => 'Пролистывание стран', 'url' => ['/country1/index']],
+                        ['label' => 'Страны CRUD', 'url' => ['/country/index']],
+                        ['label' => 'IP адрес', 'url' => ['/site/ip']],
+                ]],
+                ['label' => 'Закладки', 'items' => [
                     ['label' => 'Gii', 'url' => ['/gii']], 
+                    ['label' => 'GitHub', 'url' => ['/site/git']], 
                     ['label' => 'MySQL', 'url' => ['/site/redirect_mysql']],
-                    ['label' => 'Полное руководство по Yii 2.0', 'url' => ['/site/doc']],
+                    ['label' => 'Полное руководство по Yii 2.0', 'url' => ['/site/docyii2']],
+                    ['label' => 'Документация PHP', 'url' => ['/site/docphp']],
+                    ['label' => 'Создание схемы БД', 'url' => ['/site/dbdesigner']],
+                    ['label' => 'Руководство по Bootstarap', 'url' => ['/site/bootstarap']],
+                    ['label' => 'Сайт о путешествиях', 'url' => ['/site/www']],
             ]],
             /**/
             ['label' => 'About', 'url' => ['/site/about']],

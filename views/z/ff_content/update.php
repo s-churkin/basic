@@ -7,11 +7,10 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\Tree */
 /* @var $form ActiveForm */
 ?>
-<div class="tree-create">
+<div class="tree-update">
 
     <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($model, 'id') ?>
         <?= $form->field($model, 'name') ?>
         <?= $form->field($model, 'tree_id') ?>
         <?= $form->field($model, 'url') ?>
@@ -21,4 +20,4 @@ use yii\widgets\ActiveForm;
         </div>
     <?php ActiveForm::end(); ?>
 
-</div><!-- tree-create -->
+</div><!-- tree-update -->

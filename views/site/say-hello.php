@@ -13,7 +13,7 @@ Alert::widget([
     'options' => [
         'class' => 'alert-info'
     ],
-    'body' => '<b>!!!</b>, alert-info'
+    'body' => '<b>Alert::widget !!!</b>, alert-info'
 ]);
 
 ?>

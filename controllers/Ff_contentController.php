@@ -3,8 +3,8 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Tree;
-use app\models\TreeSearch;
+use app\models\Ff_content;
+use app\models\ff_contentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -13,9 +13,9 @@ use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
 
 /**
- * TreeController implements the CRUD actions for Tree model.
+ * Ff_content Controller implements the CRUD actions for Ff_content model.
  */
-class TreeController extends Controller
+class Ff_contentController extends Controller
 {
 
     public function behaviors()
@@ -31,12 +31,21 @@ class TreeController extends Controller
     }
 
     /**
-     * Lists all Tree models.
+     * Lists all Ff_content models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $query = Tree::find();
+
+        $searchModel = new ff_contentSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+/*
+        $query = Ff_content::find();
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -44,31 +53,31 @@ class TreeController extends Controller
         return $this->render('index', [
                     'dataProvider' => $dataProvider
         ]);
+ * 
+ */
     }
 
     /**
-     * Displays a single Tree model.
+     * Displays a single Ff_content model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
-       Yii::info('test message 1:'.$id,'my_category');
        $id = Yii::$app->request->get('id');
-       Yii::info('test message 2:'.$id,'my_category');
        return $this->render('view', [
                     'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Tree model.
+     * Creates a new Ff_content model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Tree();
+        $model = new Ff_content();
 
         if ($model->load(Yii::$app->request->post()) && $model->save())
         {
@@ -84,7 +93,7 @@ class TreeController extends Controller
 
     public function actionAdd()
     {
-        $model = new Tree();
+        $model = new Ff_content();
         $model->loadDefaultValues();
         $id = Yii::$app->request->get('id');
         $model->tree_id = $id;
@@ -102,7 +111,7 @@ class TreeController extends Controller
     }
 
     /**
-     * Updates an existing Tree model.
+     * Updates an existing Ff_content model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -124,7 +133,7 @@ class TreeController extends Controller
     }
 
     /**
-     * Deletes an existing Tree model.
+     * Deletes an existing Ff_content model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -137,15 +146,15 @@ class TreeController extends Controller
     }
 
     /**
-     * Finds the Tree model based on its primary key value.
+     * Finds the Ff_content model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Tree the loaded model
+     * @return Ff_content the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Tree::findOne($id)) !== null)
+        if (($model = Ff_content::findOne($id)) !== null)
         {
             return $model;
         }
@@ -155,4 +164,13 @@ class TreeController extends Controller
         }
     }
 
+    public function actionLabels($id)
+    { 
+        return $this->redirect(['ff_fields/index', 'id' => $id]);
+    }
+    public function actionInstance($id) {
+        return $this->redirect(['ff_instance/index', 'id' => $id]);
+    }
+
 }
+

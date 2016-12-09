@@ -3,21 +3,17 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Tree;
-use app\models\TreeSearch;
+use app\models\ff_content;
+use app\models\ff_contentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-/* * *ext** */
-use yii\data\ActiveDataProvider;
-
 /**
- * TreeController implements the CRUD actions for Tree model.
+ * Ff_contentController implements the CRUD actions for ff_content model.
  */
-class TreeController extends Controller
+class Ff_contentController extends Controller
 {
-
     public function behaviors()
     {
         return [
@@ -31,78 +27,52 @@ class TreeController extends Controller
     }
 
     /**
-     * Lists all Tree models.
+     * Lists all ff_content models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $query = Tree::find();
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
+        $searchModel = new ff_contentSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-                    'dataProvider' => $dataProvider
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Tree model.
+     * Displays a single ff_content model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
     {
-       Yii::info('test message 1:'.$id,'my_category');
-       $id = Yii::$app->request->get('id');
-       Yii::info('test message 2:'.$id,'my_category');
-       return $this->render('view', [
-                    'model' => $this->findModel($id),
+        return $this->render('view', [
+            'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Tree model.
+     * Creates a new ff_content model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Tree();
+        $model = new ff_content();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save())
-        {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-        }
-        else
-        {
+        } else {
             return $this->render('create', [
-                        'model' => $model,
-            ]);
-        }
-    }
-
-    public function actionAdd()
-    {
-        $model = new Tree();
-        $model->loadDefaultValues();
-        $id = Yii::$app->request->get('id');
-        $model->tree_id = $id;
-
-        if ($model->load(Yii::$app->request->post()) && $model->save())
-        {
-            return $this->redirect(['index']);
-        }
-        else
-        {
-            return $this->render('create', [
-                        'model' => $model,
+                'model' => $model,
             ]);
         }
     }
 
     /**
-     * Updates an existing Tree model.
+     * Updates an existing ff_content model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -111,20 +81,17 @@ class TreeController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save())
-        {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-        }
-        else
-        {
+        } else {
             return $this->render('update', [
-                        'model' => $model,
+                'model' => $model,
             ]);
         }
     }
 
     /**
-     * Deletes an existing Tree model.
+     * Deletes an existing ff_content model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -137,22 +104,18 @@ class TreeController extends Controller
     }
 
     /**
-     * Finds the Tree model based on its primary key value.
+     * Finds the ff_content model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Tree the loaded model
+     * @return ff_content the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Tree::findOne($id)) !== null)
-        {
+        if (($model = ff_content::findOne($id)) !== null) {
             return $model;
-        }
-        else
-        {
+        } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-
 }

@@ -33,7 +33,10 @@ $config = [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'exportInterval' => 1, /*!!!*/
+                    'levels' => ['info', 'error', 'warning'],
+                    'categories' => ['my_category'], /*!!!*/
+                    'logFile' => '@app/log.txt', /*!!!*/
                 ],
             ],
         ],

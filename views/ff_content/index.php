@@ -4,12 +4,15 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 /* * *ext** */
 use leandrogehlen\treegrid\TreeGrid;
+/*
+ * Использован TreeGrid jQuery plugin: http://maxazan.github.io/jquery-treegrid/
+ */
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\modules\rpg\models\TreeSearch */
+/* @var $searchModel app\modules\rpg\models\TreeSearch !!!*/
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Trees';
+$this->title = 'Дерево объектов';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tree-index">

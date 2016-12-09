@@ -5,17 +5,17 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "tree".
+ * This is the model class for table "Ff_content".
  *
  * @property integer $id
  * @property string $name
  * @property string $url
  * @property integer $tree_id
  *
- * @property Tree $tree
- * @property Tree[] $trees
+ * @property Ff_content $Ff_content
+ * @property Ff_content[] $Ff_contents
  */
-class Tree extends \yii\db\ActiveRecord
+class Ff_content extends \yii\db\ActiveRecord
 {
 
     /**
@@ -23,7 +23,7 @@ class Tree extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'tree';
+        return 'ff_content';
     }
 
     /**
@@ -43,19 +43,19 @@ class Tree extends \yii\db\ActiveRecord
 
     /**
      * @inheritdoc
-     */
+     */ 
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
-            'name' => 'name',
-            'url' => 'url',
+            'name' => 'Наименование',
+            'url' => 'Путь',
         ];
     }
-
+     
     public function myname($id)
     {
-        $model = Tree::find()
+        $model = Ff_content::find()
                         ->where(['id' => $id])
                         ->one()->name;
         return $model;
@@ -64,18 +64,19 @@ class Tree extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTree()
+    public function getFf_content()
     {
-    Yii::info('test message 3:'.$id,'my_category');
-        return $this->hasOne(Tree::className(), ['id' => 'tree_id']);
+/*
+        Yii::info('test message 3:'.$id,'my_category');
+*/
+        return $this->hasOne(Ff_content::className(), ['id' => 'tree_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTrees()
+    public function getFf_contents()
     {
-        return $this->hasMany(Tree::className(), ['tree_id' => 'id']);
+        return $this->hasMany(Ff_content::className(), ['tree_id' => 'id']);
     }
-
 }

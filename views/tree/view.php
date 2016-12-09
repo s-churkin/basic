@@ -11,6 +11,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+        <?= $form->field($model, 'id') ?>
         <?= $form->field($model, 'name') ?>
         <?= $form->field($model, 'tree_id') ?>
         <?= $form->field($model, 'url') ?>
