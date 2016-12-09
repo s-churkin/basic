@@ -57,7 +57,7 @@ class Ff_Values1 extends Model
     public function save(Ff_Values1 $model, $post, $id) // Сохранение введенных реквизитов
     {
     
-        // http://php.net/manual/en/reserved.variables.php
+        // http://php.net/manual/en/reserved.variables.php 
         foreach ($model->values as $key=>$value) {
             if ($value !== $post['Ff_Values1'][$key]['values'][$key] && (($value !== null) or ($post['Ff_Values1'][$key]['values'][$key] !== ''))) {
                 Yii::info('test message key - value : ' . $key . ' - ' . $value . ' - ' . $post['Ff_Values1'][$key]['values'][$key],'my_category');
